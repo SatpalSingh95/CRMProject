@@ -1,0 +1,26 @@
+package practice.pom.repository;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
+
+public class SampleTestWithPom 
+{
+public static void main(String[] args) 
+{
+	WebDriver driver = new FirefoxDriver();
+	driver.get("http://localhost:8888");
+	
+	SampleTestWithPom s = PageFactory.initElements(driver, SampleTestWithPom.class);
+	
+
+	s.ele1.sendKeys("admin");
+	s.ele2.sendKeys("manager");
+	driver.navigate().refresh();
+	s.ele1.sendKeys("admin");
+	s.ele2.sendKeys("manager");
+	ele3.click();
+}
+}

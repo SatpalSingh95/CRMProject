@@ -1,0 +1,9 @@
+package practice.contacttest;
+// Integration
+public class CreateContactWithOrgTest 
+{
+public static void main(String[] args) 
+{
+	
+}
+}

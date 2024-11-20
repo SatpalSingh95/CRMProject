@@ -1,0 +1,25 @@
+package practice.datadriventesting;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class CreateProjectAndVerifyDataINDBWITHGUI 
+{
+public static void main(String[] args) {
+	
+	WebDriver driver=new ChromeDriver();
+	driver.get("http://localhost:8084");
+	
+	driver.findElement(By.id("username")).sendKeys("rmgyantra");
+	driver.findElement(By.id("inputPassword")).sendKeys("rmgy@9999");
+	driver.findElement(By.xpath("//button[text()='Sign in']")).click();
+	
+	driver.findElement(By.linkText("Projects")).click();
+	
+	driver.findElement(By.xpath("//span[text()='Create Project']")).click();
+	
+	
+}
+	
+}

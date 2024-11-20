@@ -1,0 +1,68 @@
+package practice.basics;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.testng.annotations.Test;
+
+import com.mysql.cj.jdbc.Driver;
+
+public class SampleUnitTestCheckProjectInBackEnd {
+	
+	@Test
+	public void project1CheckTest() throws SQLException
+	{
+		
+		String expectedProjectName ="mytrip"; // project name
+		
+		// step1 load/ register the database driver
+		
+				Driver driverRef =new Driver();
+				DriverManager.registerDriver(driverRef);
+				
+				// step2:Establish the  connection to the  database
+				
+				Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/projects","root", "root");
+				
+				System.out.println("Successfully connected to the database "+conn);
+				
+				// After calling this method, it will give the Statement object where you can execute a query. using that statement object
+				// so that it allows to write a statement and then execute sql statements 
+				//create SQL statement
+				Statement statement=conn.createStatement();
+				
+				// step 4: execute select query and get result
+				ResultSet resultset = statement.executeQuery("select * from project1");
+				
+				
+		
+				
+				
+				// fetch the data from table and display in the consol 
+				while(resultset.next())
+				{
+					String actProjectName=resultset.getString(4);
+					System.out.println(actProjectName);
+					
+					if(expectedProjectName.equals(actProjectName))
+					{
+						System.out.println(expectedProjectName+ " is available === pass");
+						
+					}
+					// i can not write else block here the reason is very first time execution you know in while loop execution start at the first time
+					// then it is sure that expectedProjectName(airasia) is not there in
+					
+				}
+				
+				
+				
+				
+				
+				//close condition
+				conn.close();
+				
+	}
+}
